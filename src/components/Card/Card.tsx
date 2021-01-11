@@ -1,18 +1,32 @@
 import React, { ReactNode } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, radius, shadows, text } from "../../common/styles";
+import {
+  colors,
+  opacity,
+  radius,
+  shadows,
+  spacing,
+  text,
+  width,
+} from "../../common/styles";
 import { Avatar } from "../Avatar/Avatar";
 
 export type CardProps = {
   image?: string;
   title?: string;
   subtitle?: string;
+  disabled?: boolean;
 };
 
-export const Card = ({ image, title, subtitle }: CardProps) => {
+export const Card = ({
+  image,
+  title,
+  subtitle,
+  disabled = false,
+}: CardProps) => {
   return (
-    <Container>
+    <Container disabled={disabled}>
       {image && <Avatar image={image} size="large" />}
       <Content>
         {title && <Title>{title}</Title>}
@@ -23,22 +37,41 @@ export const Card = ({ image, title, subtitle }: CardProps) => {
   );
 };
 
-const Container = styled.div`
-  width: 100%;
-  padding: 32px;
+type ContainerProps = {
+  disabled: boolean;
+};
+
+const Container = styled.div<ContainerProps>`
+  width: ${width.full};
+  padding: ${spacing.xxl}px;
   border-radius: ${radius.round}px;
   ${shadows.m};
 
   display: flex;
   align-items: center;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+  &:hover {
+    ${shadows.l};
+  }
+  user-select: none;
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      cursor: not-allowed;
+      opacity: ${opacity.disabled};
+    `}
 `;
 
 const Content = styled.div`
-  margin-left: 16px;
+  margin-left: ${spacing.l}px;
 `;
 
 const Title = styled.div`
-  margin-bottom: 4px;
+  margin-bottom: ${spacing.xs}px;
   font-size: ${text.h4.size}px;
   font-weight: ${text.h4.weight};
   color: ${colors.gray1};

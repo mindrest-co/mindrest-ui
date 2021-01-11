@@ -187,7 +187,11 @@ export const spacing = {
   m: 8,
   l: 16,
   xl: 24,
-  xxl: 36,
+  xxl: 32,
+};
+
+export const width = {
+  full: "100%",
 };
 
 // Type

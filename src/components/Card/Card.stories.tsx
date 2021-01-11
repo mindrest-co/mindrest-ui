@@ -6,13 +6,18 @@ import { Card, CardProps } from "./Card";
 export default {
   title: "Components/Card",
   component: Card,
+  args: {
+    image: "/assets/images/person.jpg",
+    title: "광화문숲 정신건강의학과",
+    subtitle: "이정석 선생님",
+  },
 } as Meta;
 
 const Template: Story<CardProps> = args => <Card {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  image: "/assets/images/person.jpg",
-  title: "광화문숲 정신건강의학과",
-  subtitle: "이정석 선생님",
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
 };
