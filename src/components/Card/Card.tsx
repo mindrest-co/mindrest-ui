@@ -11,12 +11,14 @@ import {
   width,
 } from "../../common/styles";
 import { Avatar } from "../Avatar/Avatar";
+import { StateBadge, StateType } from "../Badge/StateBadge";
 
 export type CardProps = {
   image?: string;
   title?: string;
   subtitle?: string;
   disabled?: boolean;
+  state?: StateType;
 };
 
 export const Card = ({
@@ -24,12 +26,22 @@ export const Card = ({
   title,
   subtitle,
   disabled = false,
+  state,
 }: CardProps) => {
   return (
     <Container disabled={disabled}>
-      {image && <Avatar image={image} size="large" />}
+      {image && (
+        <ImageContainer>
+          <Avatar image={image} size="large" />
+        </ImageContainer>
+      )}
       <Content>
-        {title && <Title>{title}</Title>}
+        {title && (
+          <TitleContainer>
+            <Title>{title}</Title>
+            {state && <StateBadge state={state} />}
+          </TitleContainer>
+        )}
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
       </Content>
       <Arrow>{"검사지 1개 >"}</Arrow>
@@ -66,12 +78,23 @@ const Container = styled.div<ContainerProps>`
     `}
 `;
 
-const Content = styled.div`
-  margin-left: ${spacing.l}px;
+const ImageContainer = styled.div`
+  margin-right: ${spacing.l}px;
+`;
+
+const Content = styled.div``;
+
+const TitleContainer = styled.div`
+  display: flex;
+  margin-bottom: ${spacing.xs}px;
+  align-items: center;
+
+  & > div + div {
+    margin-left: ${spacing.m}px;
+  }
 `;
 
 const Title = styled.div`
-  margin-bottom: ${spacing.xs}px;
   font-size: ${text.h4.size}px;
   font-weight: ${text.h4.weight};
   color: ${colors.gray1};

@@ -44,6 +44,10 @@ const Container = styled.div<ContainerProps>`
   font-weight: ${text.badge.weight};
 
   ${({ type }) => typeStyle[type]}
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const typeStyle = {

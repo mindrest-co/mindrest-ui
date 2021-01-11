@@ -31,7 +31,7 @@ Default.args = {
   items,
 };
 
-export const Collaboration = () => {
+export const TwoList = () => {
   return (
     <>
       <CardList label={label} items={items} />
