@@ -3,11 +3,11 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { colors, radius, text } from "../../common/styles";
 
-export type StateType = "weight" | "ing" | "done" | "none";
+export type StatusType = "weight" | "ing" | "done" | "none";
 type SizeType = "small" | "xsmall";
 
-export type StateBadgeProps = {
-  state: StateType;
+export type StatusBadgeProps = {
+  status: StatusType;
   size?: SizeType;
 };
 
@@ -18,22 +18,22 @@ const label = {
   none: "미검사",
 };
 
-export const StateBadge = ({ state, size = "xsmall" }: StateBadgeProps) => {
+export const StatusBadge = ({ status, size = "xsmall" }: StatusBadgeProps) => {
   return (
-    <Container state={state} size={size}>
-      <Label>{label[state]}</Label>
+    <Container status={status} size={size}>
+      <Label>{label[status]}</Label>
     </Container>
   );
 };
 
 type ContainerProps = {
-  state: StateType;
+  status: StatusType;
   size: SizeType;
 };
 
 const Container = styled.div<ContainerProps>`
   ${({ size }) => sizeStyles[size]};
-  ${({ state }) => stateStyles[state]}
+  ${({ status }) => statusStyles[status]}
   border-radius: ${radius.small}px;
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@ const Container = styled.div<ContainerProps>`
 
 const Label = styled.div``;
 
-const stateStyles = {
+const statusStyles = {
   weight: css`
     background-color: ${colors.gray6};
     color: ${colors.gray1};

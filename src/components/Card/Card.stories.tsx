@@ -29,13 +29,13 @@ export const WithBadge = Template.bind({});
 WithBadge.args = {
   title: "SADS 검사",
   subtitle: "(사회적 회피 및 불안척도)",
-  state: "weight",
+  status: "weight",
 };
 
 export const WithBadgeDisabled = Template.bind({});
 WithBadgeDisabled.args = {
   title: "SADS 검사",
   subtitle: "(사회적 회피 및 불안척도)",
-  state: "weight",
+  status: "weight",
   disabled: true,
 };

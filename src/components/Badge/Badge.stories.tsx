@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import styled from "@emotion/styled";
 import { Badge, BadgeProps } from "./Badge";
-import { StateBadge } from "./StateBadge";
+import { StatusBadge } from "./StatusBadge";
 import { RoleBadge } from "./RoleBadge";
 
 export default {
@@ -65,25 +65,25 @@ export const RoleBadges = () => {
   );
 };
 
-export const StateBadges = () => {
+export const StatusBadges = () => {
   return (
     <Vertical>
       <div>
         <Title>Small</Title>
         <Horizontal>
-          <StateBadge size="small" state="weight" />
-          <StateBadge size="small" state="ing" />
-          <StateBadge size="small" state="done" />
-          <StateBadge size="small" state="none" />
+          <StatusBadge size="small" status="weight" />
+          <StatusBadge size="small" status="ing" />
+          <StatusBadge size="small" status="done" />
+          <StatusBadge size="small" status="none" />
         </Horizontal>
       </div>
       <div>
         <Title>XSmall</Title>
         <Horizontal>
-          <StateBadge state="weight" />
-          <StateBadge state="ing" />
-          <StateBadge state="done" />
-          <StateBadge state="none" />
+          <StatusBadge status="weight" />
+          <StatusBadge status="ing" />
+          <StatusBadge status="done" />
+          <StatusBadge status="none" />
         </Horizontal>
       </div>
     </Vertical>

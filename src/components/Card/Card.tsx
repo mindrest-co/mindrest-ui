@@ -11,14 +11,14 @@ import {
   width,
 } from "../../common/styles";
 import { Avatar } from "../Avatar/Avatar";
-import { StateBadge, StateType } from "../Badge/StateBadge";
+import { StatusBadge, StatusType } from "../Badge/StatusBadge";
 
 export type CardProps = {
   image?: string;
   title?: string;
   subtitle?: string;
   disabled?: boolean;
-  state?: StateType;
+  status?: StatusType;
 };
 
 export const Card = ({
@@ -26,7 +26,7 @@ export const Card = ({
   title,
   subtitle,
   disabled = false,
-  state,
+  status,
 }: CardProps) => {
   return (
     <Container disabled={disabled}>
@@ -39,7 +39,7 @@ export const Card = ({
         {title && (
           <TitleContainer>
             <Title>{title}</Title>
-            {state && <StateBadge state={state} />}
+            {status && <StatusBadge status={status} />}
           </TitleContainer>
         )}
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
