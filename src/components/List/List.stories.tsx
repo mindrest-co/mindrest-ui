@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
+import { Meta } from "@storybook/react/types-6-0";
 
-import { List, ListProps } from "./List";
+import { List } from "./List";
 import { ListAccordion } from "./ListAccordion";
 import { ListItem } from "./ListItem";
 
@@ -22,6 +22,7 @@ export const Default = () => {
         <ListAccordion
           title="👨🏻‍⚕️ 홍길동 선생님"
           onClick={() => setActived(prev => !prev)}
+          actived={actived}
         />
       }
       items={
