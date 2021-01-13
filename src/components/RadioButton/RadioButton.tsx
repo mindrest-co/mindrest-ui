@@ -12,6 +12,7 @@ export type RadioButtonProps = {
   size?: SizeType;
   direction?: DirectionType;
   disabled?: boolean;
+  onClick?: (id: number) => void;
 };
 
 export const RadioButton = ({
@@ -20,11 +21,17 @@ export const RadioButton = ({
   size = "large",
   direction = "left",
   disabled = false,
+  onClick = () => {},
 }: RadioButtonProps) => {
   return (
     <Group disabled={disabled} direction={direction} size={size}>
       {items.map((text, index) => (
-        <Container disabled={disabled} direction={direction} size={size}>
+        <Container
+          disabled={disabled}
+          direction={direction}
+          size={size}
+          onClick={() => onClick(index)}
+        >
           <OuterCircle actived={select === index} size={size}>
             {select === index && (
               <InnerCircle actived={select === index} size={size} />

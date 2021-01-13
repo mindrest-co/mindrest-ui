@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meta, Story } from "@storybook/react/types-6-0";
 
 import { RadioButton, RadioButtonProps } from "./RadioButton";
@@ -31,13 +31,25 @@ Bottom.args = {
   direction: "bottom",
 };
 
-export const VerticalGroup = Template.bind({});
-VerticalGroup.args = {
-  items: ["나는 슬프지 않다", "나는 슬프다", "나는 괜찮다", "나는 좋다"],
+export const VerticalGroup = () => {
+  const [select, setSelect] = useState(-1);
+  return (
+    <RadioButton
+      items={["나는 슬프지 않다", "나는 슬프다", "나는 괜찮다", "나는 좋다"]}
+      select={select}
+      onClick={(id: number) => setSelect(id)}
+    />
+  );
 };
 
-export const HorizontalGroup = Template.bind({});
-HorizontalGroup.args = {
-  items: ["나는 슬프지 않다", "나는 슬프다", "나는 괜찮다", "나는 좋다"],
-  direction: "bottom",
+export const HorizontalGroup = () => {
+  const [select, setSelect] = useState(-1);
+  return (
+    <RadioButton
+      items={["나는 슬프지 않다", "나는 슬프다", "나는 괜찮다", "나는 좋다"]}
+      direction="bottom"
+      select={select}
+      onClick={(id: number) => setSelect(id)}
+    />
+  );
 };
