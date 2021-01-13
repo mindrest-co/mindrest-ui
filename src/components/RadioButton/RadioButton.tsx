@@ -7,31 +7,63 @@ type DirectionType = "left" | "bottom";
 type SizeType = "large" | "medium" | "small";
 
 export type RadioButtonProps = {
-  text: string;
+  items: string[];
+  select: number;
   size?: SizeType;
   direction?: DirectionType;
   disabled?: boolean;
-  actived?: boolean;
 };
 
 export const RadioButton = ({
-  text,
+  items,
+  select,
   size = "large",
   direction = "left",
   disabled = false,
-  actived = false,
 }: RadioButtonProps) => {
   return (
-    <Container disabled={disabled} direction={direction} size={size}>
-      <OuterCircle actived={actived} size={size}>
-        {actived && <InnerCircle actived={actived} size={size} />}
-      </OuterCircle>
-      <Text actived={actived} size={size}>
-        {text}
-      </Text>
-    </Container>
+    <Group disabled={disabled} direction={direction} size={size}>
+      {items.map((text, index) => (
+        <Container disabled={disabled} direction={direction} size={size}>
+          <OuterCircle actived={select === index} size={size}>
+            {select === index && (
+              <InnerCircle actived={select === index} size={size} />
+            )}
+          </OuterCircle>
+          <Text actived={select === index} size={size} direction={direction}>
+            {text}
+          </Text>
+        </Container>
+      ))}
+    </Group>
   );
 };
+
+type GroupProps = {
+  disabled: boolean;
+  direction: DirectionType;
+  size: SizeType;
+};
+
+const Group = styled.div<GroupProps>`
+  ${({ direction, size }) => {
+    if (direction === "left") {
+      return css`
+        & > div + div {
+          margin-top: ${verticalMargins[size]}px;
+        }
+      `;
+    }
+    if (direction === "bottom") {
+      return css`
+        display: flex;
+        & > div + div {
+          margin-left: ${horizontalMargins[size]}px;
+        }
+      `;
+    }
+  }}
+`;
 
 type ContainerProps = {
   disabled: boolean;
@@ -54,16 +86,15 @@ const Container = styled.div<ContainerProps>`
     if (direction === "left") {
       return css`
         & > div + div {
-          margin-left: ${TextMargins[size]}px;
+          margin-left: ${textMargins[size]}px;
         }
       `;
     }
     if (direction === "bottom") {
       return css`
         flex-direction: column-reverse;
-        justify-content: center;
         & > div + div {
-          margin-bottom: ${TextMargins[size]}px;
+          margin-bottom: ${textMargins[size]}px;
         }
       `;
     }
@@ -99,12 +130,19 @@ const InnerCircle = styled.div<InnerCircleProps>`
 type TextProps = {
   actived: boolean;
   size: SizeType;
+  direction: DirectionType;
 };
 
 const Text = styled.div<TextProps>`
   color: ${({ actived }) => (actived ? colors.blue : colors.gray3)};
-  ${({ size }) => TextSizeStyles[size]};
+  ${({ size }) => textSizeStyles[size]};
   text-align: center;
+  ${({ direction, size }) => {
+    if (direction === "bottom") {
+      return textWithStyles[size];
+    }
+  }};
+  word-break: keep-all;
 `;
 
 const outerCircleSizeStyles = {
@@ -137,7 +175,7 @@ const innerCircleSizeStyles = {
   `,
 };
 
-const TextSizeStyles = {
+const textSizeStyles = {
   large: css`
     font-size: ${text.b1.size}px;
     font-weight: ${text.b1.weight};
@@ -152,8 +190,32 @@ const TextSizeStyles = {
   `,
 };
 
-const TextMargins = {
+const textMargins = {
   large: spacing.m,
   medium: spacing.s,
   small: spacing.s,
+};
+
+const textWithStyles = {
+  large: css`
+    width: 130px;
+  `,
+  medium: css`
+    width: 80px;
+  `,
+  small: css`
+    width: 70px;
+  `,
+};
+
+const verticalMargins = {
+  large: spacing.l,
+  medium: spacing.l,
+  small: spacing.m,
+};
+
+const horizontalMargins = {
+  large: 32,
+  medium: 24,
+  small: 24,
 };
