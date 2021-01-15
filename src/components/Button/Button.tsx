@@ -156,7 +156,7 @@ const buttonSizes = {
     height: 70px;
   `,
   xlarge: css`
-    width: 426px;
+    width: 358px;
     height: 70px;
   `,
   large: css`
