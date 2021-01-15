@@ -1,7 +1,8 @@
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { ReactNode, useCallback, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { colors, shadows, spacing, text } from "../../common/styles";
+import { animations } from "../../common/animations";
 
 type SizeType = "large" | "medium" | "small";
 
@@ -17,21 +18,23 @@ export const Accordion = ({
   title,
   actived = false,
   disabled = false,
-  size = "large",
+  size = "medium",
   children,
 }: AccordionProps) => {
   const childrenRef = useRef<HTMLDivElement>(null);
 
-  const toggleItems = () => {
+  const toggleItems = useCallback(() => {
     if (childrenRef.current) {
       if (!actived) {
         childrenRef.current.style.maxHeight = "0px";
+        childrenRef.current.style.opacity = "0";
       } else {
         childrenRef.current.style.maxHeight =
           childrenRef.current.scrollHeight + "px";
+        childrenRef.current.style.opacity = "1";
       }
     }
-  };
+  }, [childrenRef.current, actived]);
 
   useEffect(() => {
     toggleItems();
@@ -57,7 +60,6 @@ type HeaderProps = {
 
 const Header = styled.div<HeaderProps>`
   border-radius: ${spacing.l}px;
-
   ${({ actived }) =>
     actived
       ? css`
@@ -82,8 +84,9 @@ const Title = styled.div``;
 
 const Children = styled.div`
   max-height: 0px;
-  overflow: hidden;
-  transition: all 0.3s ease-out;
+  opacity: 0;
+  transition: all 0.2s;
+  margin-top: ${spacing.m}px;
 `;
 
 // style

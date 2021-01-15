@@ -29,7 +29,17 @@ const upDown = keyframes`
 
 `;
 
+const slideDown = keyframes`
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 1000px;
+  }
+`;
+
 export const animations = {
   bounce,
   upDown,
+  slideDown,
 };
