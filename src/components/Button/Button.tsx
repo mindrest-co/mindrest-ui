@@ -96,8 +96,8 @@ const Container = styled.button<ContainerProps>`
   }
 
   color: ${({ color }) => color};
-  font-size: ${text.b2.size}px;
-  font-weight: ${text.b2.weight};
+  font-size: ${text.h6.size}px;
+  font-weight: ${text.h6.weight};
 
   ${({ size }) => {
     if (size === "xsmall") {
