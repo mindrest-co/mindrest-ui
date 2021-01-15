@@ -6,9 +6,10 @@ import { colors } from "../../common/styles";
 export type IconProps = {
   size?: number;
   color?: string;
+  name?: string;
 };
 
-export const Icon = ({ size = 24, color = colors.gray1 }: IconProps) => {
+export const Icon = ({ size = 24, color = colors.gray1, name }: IconProps) => {
   return <Container size={size} color={color}></Container>;
 };
 
