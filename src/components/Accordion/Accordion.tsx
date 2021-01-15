@@ -5,6 +5,7 @@ import { colors, shadows, spacing, text } from "../../common/styles";
 import { animations } from "../../common/animations";
 
 type SizeType = "large" | "medium" | "small";
+type PositionType = "inside" | "outside";
 
 export type AccordionProps = {
   title: string;
@@ -12,6 +13,7 @@ export type AccordionProps = {
   disabled?: boolean;
   size?: SizeType;
   children: ReactNode;
+  position?: PositionType;
 };
 
 export const Accordion = ({
@@ -20,6 +22,7 @@ export const Accordion = ({
   disabled = false,
   size = "medium",
   children,
+  position = "outside",
 }: AccordionProps) => {
   const childrenRef = useRef<HTMLDivElement>(null);
 
@@ -27,14 +30,18 @@ export const Accordion = ({
     if (childrenRef.current) {
       if (!actived) {
         childrenRef.current.style.maxHeight = "0px";
-        childrenRef.current.style.opacity = "0";
+        if (position === "outside") {
+          childrenRef.current.style.opacity = "0";
+        }
       } else {
         childrenRef.current.style.maxHeight =
           childrenRef.current.scrollHeight + "px";
-        childrenRef.current.style.opacity = "1";
+        if (position === "outside") {
+          childrenRef.current.style.opacity = "1";
+        }
       }
     }
-  }, [childrenRef.current, actived]);
+  }, [childrenRef.current, actived, position]);
 
   useEffect(() => {
     toggleItems();
@@ -44,8 +51,17 @@ export const Accordion = ({
     <Container>
       <Header actived={actived} disabled={disabled} size={size}>
         <Title>{title}</Title>
+        {position === "inside" && (
+          <Children ref={childrenRef} position={position}>
+            {children}
+          </Children>
+        )}
       </Header>
-      <Children ref={childrenRef}>{children}</Children>
+      {position === "outside" && (
+        <Children ref={childrenRef} position={position}>
+          {children}
+        </Children>
+      )}
     </Container>
   );
 };
@@ -82,11 +98,22 @@ const Header = styled.div<HeaderProps>`
 
 const Title = styled.div``;
 
-const Children = styled.div`
+type ChildrenProps = {
+  position: PositionType;
+};
+
+const Children = styled.div<ChildrenProps>`
   max-height: 0px;
-  opacity: 0;
   transition: all 0.2s;
-  margin-top: ${spacing.m}px;
+
+  ${({ position }) =>
+    position === "inside"
+      ? css`
+          overflow: hidden;
+        `
+      : css`
+          opacity: 0;
+        `}
 `;
 
 // style
