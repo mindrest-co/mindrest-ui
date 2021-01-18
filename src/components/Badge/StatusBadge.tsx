@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, radius, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export type StatusType = "weight" | "ing" | "done" | "none";
 type SizeType = "small" | "xsmall";
@@ -11,7 +11,7 @@ export type StatusBadgeProps = {
   size?: SizeType;
 };
 
-const label = {
+const text = {
   weight: "검사대기",
   ing: "검사중",
   done: "검사완료",
@@ -21,7 +21,7 @@ const label = {
 export const StatusBadge = ({ status, size = "xsmall" }: StatusBadgeProps) => {
   return (
     <Container status={status} size={size}>
-      <Label>{label[status]}</Label>
+      <Text>{text[status]}</Text>
     </Container>
   );
 };
@@ -34,44 +34,42 @@ type ContainerProps = {
 const Container = styled.div<ContainerProps>`
   ${({ size }) => sizeStyles[size]};
   ${({ status }) => statusStyles[status]}
-  border-radius: ${radius.small}px;
+  border-radius: ${theme.radius.sm}px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const Label = styled.div``;
+const Text = styled.div``;
 
 const statusStyles = {
   weight: css`
-    background-color: ${colors.gray6};
-    color: ${colors.gray1};
+    background-color: ${theme.color.gray6};
+    color: ${theme.color.gray1};
   `,
   ing: css`
-    background-color: ${colors.blueLight3};
-    color: ${colors.blueDark1};
+    background-color: ${theme.color.blueLight3};
+    color: ${theme.color.blueDark1};
   `,
 
   done: css`
-    background-color: ${colors.greenLight3};
-    color: ${colors.greenDark1};
+    background-color: ${theme.color.greenLight3};
+    color: ${theme.color.greenDark1};
   `,
 
   none: css`
-    background-color: ${colors.redLight3};
-    color: ${colors.redDark1};
+    background-color: ${theme.color.redLight3};
+    color: ${theme.color.redDark1};
   `,
 };
 
 const sizeStyles = {
   small: css`
     padding: 6px 8px;
-    font-size: ${text.caption.size}px;
-    font-weight: ${text.caption.weight};
+    ${theme.typo.caption};
   `,
   xsmall: css`
     padding: 4px 8px;
-    font-size: ${text.badge.size}px;
-    font-weight: ${text.badge.weight};
+    ${theme.typo.badge};
   `,
 };

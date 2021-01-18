@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
 
 export type ListAccordionProps = {
@@ -31,13 +31,12 @@ const Container = styled.div`
   height: 60px;
   padding: 0px 16px;
 
-  background-color: ${colors.gray7};
+  background-color: ${theme.color.gray7};
 `;
 
 const Title = styled.div`
-  font-size: ${text.h6.size}px;
-  font-weight: ${text.h6.weight};
-  color: ${colors.gray2};
+  ${theme.typo.h6};
+  color: ${theme.color.gray2};
 `;
 
 type ArrowProps = {

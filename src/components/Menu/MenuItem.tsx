@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Icon } from "../Icon/Icon";
 import { css } from "@emotion/react";
-import { colors } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export type MenuItemProps = {
   label: string;
@@ -35,12 +35,12 @@ const Container = styled.div<ContainerProps>`
   ${({ actived }) =>
     actived
       ? css`
-          background-color: ${colors.gray5};
-          color: ${colors.gray2};
+          background-color: ${theme.color.gray5};
+          color: ${theme.color.gray2};
         `
       : css`
-          background-color: ${colors.gray7};
-          color: ${colors.gray3};
+          background-color: ${theme.color.gray7};
+          color: ${theme.color.gray3};
         `}
 `;
 
@@ -54,5 +54,5 @@ const ActiveBar = styled.div`
   top: 0;
   width: 4px;
   height: 100%;
-  background-color: ${colors.blue};
+  background-color: ${theme.color.blue};
 `;

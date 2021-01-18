@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { colors, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { Avatar } from "../Avatar/Avatar";
 import { Badge } from "../Badge/Badge";
 
@@ -53,12 +53,12 @@ const Container = styled.div<ContainerProps>`
   ${({ actived }) =>
     actived
       ? css`
-          background-color: ${colors.gray5};
-          color: ${colors.gray2};
+          background-color: ${theme.color.gray5};
+          color: ${theme.color.gray2};
         `
       : css`
-          background-color: ${colors.gray7};
-          color: ${colors.gray3};
+          background-color: ${theme.color.gray7};
+          color: ${theme.color.gray3};
         `}
 `;
 const ActiveBar = styled.div`
@@ -67,21 +67,19 @@ const ActiveBar = styled.div`
   top: 0;
   width: 4px;
   height: 100%;
-  background-color: ${colors.blue};
+  background-color: ${theme.color.blue};
 `;
 
 const Title = styled.div<ContainerProps>`
   margin-left: 8px;
-  font-size: ${text.h5.size}px;
-  font-weight: ${text.h5.weight};
-  color: ${({ actived }) => (actived ? colors.gray2 : colors.gray3)};
+  ${theme.typo.h5};
+  color: ${({ actived }) => (actived ? theme.color.gray2 : theme.color.gray3)};
 `;
 
 const Subtitle = styled.div<ContainerProps>`
   margin-left: 4px;
-  font-size: ${text.h5.size}px;
-  font-weight: ${text.h5.weight};
-  color: ${({ actived }) => (actived ? colors.gray3 : colors.gray4)};
+  ${theme.typo.h5};
+  color: ${({ actived }) => (actived ? theme.color.gray3 : theme.color.gray4)};
 `;
 
 const Notice = styled.div`

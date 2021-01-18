@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { colors } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export type IconProps = {
   size?: number;
@@ -9,7 +9,11 @@ export type IconProps = {
   name?: string;
 };
 
-export const Icon = ({ size = 24, color = colors.gray1, name }: IconProps) => {
+export const Icon = ({
+  size = 24,
+  color = theme.color.gray1,
+  name,
+}: IconProps) => {
   return <Container size={size} color={color}></Container>;
 };
 

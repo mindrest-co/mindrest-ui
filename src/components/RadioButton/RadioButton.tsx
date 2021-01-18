@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { colors, radius, spacing, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 type DirectionType = "left" | "bottom";
 type SizeType = "large" | "medium" | "small";
@@ -114,8 +114,9 @@ type OuterCircleProps = {
 };
 
 const OuterCircle = styled.div<OuterCircleProps>`
-  border-radius: ${radius.circle}px;
-  border: 2px solid ${({ actived }) => (actived ? colors.blue : colors.gray3)};
+  border-radius: ${theme.radius.circle}px;
+  border: 2px solid
+    ${({ actived }) => (actived ? theme.color.blue : theme.color.gray3)};
   ${({ size }) => outerCircleSizeStyles[size]};
 
   display: flex;
@@ -129,8 +130,9 @@ type InnerCircleProps = {
 };
 
 const InnerCircle = styled.div<InnerCircleProps>`
-  border-radius: ${radius.circle}px;
-  background-color: ${({ actived }) => (actived ? colors.blue : colors.gray3)};
+  border-radius: ${theme.radius.circle}px;
+  background-color: ${({ actived }) =>
+    actived ? theme.color.blue : theme.color.gray3};
   ${({ size }) => innerCircleSizeStyles[size]};
 `;
 
@@ -141,7 +143,7 @@ type TextProps = {
 };
 
 const Text = styled.div<TextProps>`
-  color: ${({ actived }) => (actived ? colors.blue : colors.gray3)};
+  color: ${({ actived }) => (actived ? theme.color.blue : theme.color.gray3)};
   ${({ size }) => textSizeStyles[size]};
   text-align: center;
   ${({ direction, size }) => {
@@ -183,24 +185,15 @@ const innerCircleSizeStyles = {
 };
 
 const textSizeStyles = {
-  large: css`
-    font-size: ${text.b1.size}px;
-    font-weight: ${text.b1.weight};
-  `,
-  medium: css`
-    font-size: ${text.b4.size}px;
-    font-weight: ${text.b4.weight};
-  `,
-  small: css`
-    font-size: ${text.caption.size}px;
-    font-weight: ${text.caption.weight};
-  `,
+  large: theme.typo.b1,
+  medium: theme.typo.b4,
+  small: theme.typo.caption,
 };
 
 const textMargins = {
-  large: spacing.m,
-  medium: spacing.s,
-  small: spacing.s,
+  large: theme.spacing.md,
+  medium: theme.spacing.sm,
+  small: theme.spacing.sm,
 };
 
 const textWithStyles = {
@@ -216,9 +209,9 @@ const textWithStyles = {
 };
 
 const verticalMargins = {
-  large: spacing.l,
-  medium: spacing.l,
-  small: spacing.m,
+  large: theme.spacing.lg,
+  medium: theme.spacing.lg,
+  small: theme.spacing.md,
 };
 
 const horizontalMargins = {

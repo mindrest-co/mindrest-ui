@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors, radius, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
 
 export type TextareaProps = {
@@ -23,25 +23,24 @@ const Container = styled.textarea<ContainerProps>`
   width: 100%;
   height: 208px;
   padding: 24px 16px;
-  border-radius: ${radius.medium}px;
-  caret-color: ${colors.blue};
+  border-radius: ${theme.radius.md}px;
+  caret-color: ${theme.color.blue};
 
   resize: none;
   outline: none;
 
-  font-size: ${text.b4.size}px;
-  font-weight: ${text.b4.weight};
-  color: ${colors.gray1};
-  background-color: ${colors.gray7};
+  ${theme.typo.b4};
+  color: ${theme.color.gray1};
+  background-color: ${theme.color.gray7};
   ::placeholder {
-    color: ${colors.gray3};
+    color: ${theme.color.gray3};
   }
 
   ${({ disabled }) =>
     disabled &&
     css`
-      color: ${colors.gray3};
-      background-color: ${colors.gray5};
+      color: ${theme.color.gray3};
+      background-color: ${theme.color.gray5};
       cursor: not-allowed;
     `}
 `;

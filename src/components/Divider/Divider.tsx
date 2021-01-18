@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
 
 export type DividerProps = {
@@ -18,7 +18,7 @@ type ContainerProps = {
 const Container = styled.div<ContainerProps>`
   width: 100%;
   height: 1px;
-  background-color: ${colors.gray5};
+  background-color: ${theme.color.gray5};
   ${({ spacing }) =>
     spacing &&
     css`

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Icon } from "../Icon/Icon";
-import { colors, spacing, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
 
 export type CheckboxProps = {
@@ -20,7 +20,7 @@ export const Checkbox = ({
   return (
     <Container onClick={onClick} disabled={disabled}>
       <Box actived={actived}>
-        {actived && <Icon size={24} color={colors.white} />}
+        {actived && <Icon size={24} color={theme.color.white} />}
       </Box>
       <Label>{label}</Label>
     </Container>
@@ -50,16 +50,16 @@ type BoxProps = {
 const Box = styled.div<BoxProps>`
   width: 28px;
   height: 28px;
-  border-radius: ${spacing.xs}px;
+  border-radius: ${theme.spacing.xs}px;
 
   ${({ actived }) =>
     actived
       ? css`
-          background-color: ${colors.blue};
+          background-color: ${theme.color.blue};
         `
       : css`
-          background-color: ${colors.white};
-          border: 2px solid ${colors.gray3};
+          background-color: ${theme.color.white};
+          border: 2px solid ${theme.color.gray3};
         `}
 
   display: flex;
@@ -68,8 +68,7 @@ const Box = styled.div<BoxProps>`
 `;
 
 const Label = styled.div`
-  margin-left: ${spacing.m}px;
-  font-size: ${text.b1.size}px;
-  font-weight: ${text.b1.weight};
-  color: ${colors.gray1};
+  margin-left: ${theme.spacing.md}px;
+  color: ${theme.color.gray1};
+  ${theme.typo.b1};
 `;

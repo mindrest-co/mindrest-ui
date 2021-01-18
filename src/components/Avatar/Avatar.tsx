@@ -1,14 +1,13 @@
 import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { text, TextType } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { RoleBadge, RoleType } from "../Badge/RoleBadge";
 
-export type SizeType = "xlarge" | "large" | "medium" | "small";
+type SizeType = "xlarge" | "large" | "medium" | "small";
 
 export type AvatarProps = {
   image?: string;
-  /**Size */
   size?: SizeType;
   name?: string;
   role?: RoleType | undefined;
@@ -27,7 +26,7 @@ export const Avatar = ({
       <Image src={image} alt="avatar" size={size} />
       {(name || role) && (
         <Info size={size}>
-          {name && <Name type={texts[size] as TextType}>{name}</Name>}
+          {name && <Name size={size}>{name}</Name>}
           {role && <RoleBadge role={role} />}
         </Info>
       )}
@@ -48,21 +47,18 @@ type ImageProps = {
 
 const Image = styled.img<ImageProps>`
   ${({ size }) => css`
-    width: ${sizes[size]}px;
-    height: ${sizes[size]}px;
-    border-radius: ${sizes[size] / 2}px;
+    width: ${imageSizes[size]}px;
+    height: ${imageSizes[size]}px;
+    border-radius: ${imageSizes[size] / 2}px;
   `}
 `;
 
 type NameProps = {
-  type: TextType;
+  size: SizeType;
 };
 
 const Name = styled.div<NameProps>`
-  ${({ type }) => css`
-    font-size: ${text[type].size}px;
-    font-weight: ${text[type].weight};
-  `}
+  ${({ size }) => textSizes[size]};
 `;
 
 type InfoProps = {
@@ -81,7 +77,7 @@ const Info = styled.div<InfoProps>`
   margin-top: ${({ size }) => margins[size]}px;
 `;
 
-const sizes = {
+const imageSizes = {
   xlarge: 100,
   large: 80,
   medium: 64,
@@ -95,9 +91,9 @@ const margins = {
   small: 4,
 };
 
-const texts = {
-  xlarge: "h4",
-  large: "h5",
-  medium: "h5",
-  small: "h6",
+const textSizes = {
+  xlarge: theme.typo.h4,
+  large: theme.typo.h5,
+  medium: theme.typo.h5,
+  small: theme.typo.h6,
 };

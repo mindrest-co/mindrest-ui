@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors, spacing, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
 import { Icon } from "../Icon/Icon";
 
@@ -18,7 +18,7 @@ export const TextButton = ({
   text,
   size = "large",
   icon,
-  color = colors.gray1,
+  color = theme.color.gray1,
   disabled = false,
 }: TextButtonProps) => {
   return (
@@ -59,20 +59,11 @@ const Container = styled.button<ContainerProps>`
 const TextContainer = styled.div``;
 
 const IconContainer = styled.div`
-  margin-left: ${spacing.xs}px;
+  margin-left: ${theme.spacing.xs}px;
 `;
 
 const sizeStyles = {
-  large: css`
-    font-size: ${text.h5.size}px;
-    font-weight: ${text.h5.weight};
-  `,
-  medium: css`
-    font-size: ${text.h6.size}px;
-    font-weight: ${text.h6.weight};
-  `,
-  small: css`
-    font-size: ${text.captionMedium.size}px;
-    font-weight: ${text.captionMedium.weight};
-  `,
+  large: theme.typo.h5,
+  medium: theme.typo.h6,
+  small: theme.typo.captionMedium,
 };

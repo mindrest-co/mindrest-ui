@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import styled from "@emotion/styled";
 import { Button, ButtonProps } from "./Button";
-import { text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export default {
   title: "Components/Button",
@@ -66,8 +66,7 @@ Bordered.args = {
 };
 
 const Title = styled.div`
-  font-size: ${text.captionTitle.size}px;
-  font-weight: ${text.captionTitle.weight};
+  ${theme.typo.captionTitle};
   margin-bottom: 10px;
 `;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import { radius, shadows, spacing } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export type BackTopProps = {};
 
@@ -42,8 +42,8 @@ const Container = styled.button<ContainerProps>`
   all: unset;
 
   cursor: pointer;
-  ${shadows.l};
-  border-radius: ${radius.circle}px;
+  ${theme.shadow.lg};
+  border-radius: ${theme.radius.circle}px;
   width: 60px;
   height: 60px;
 
@@ -52,8 +52,8 @@ const Container = styled.button<ContainerProps>`
   align-items: center;
 
   position: fixed;
-  right: ${spacing.xl}px;
-  bottom: ${spacing.xl}px;
+  right: ${theme.spacing.xl}px;
+  bottom: ${theme.spacing.xl}px;
 
   transition: all 0.3s ease-in-out;
   opacity: ${({ show }) => (show ? 1 : 0)};

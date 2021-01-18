@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors, spacing, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
 
 type WidthType = "large" | "small" | "full";
@@ -37,14 +37,13 @@ export const Input = ({
 
 const Container = styled.div`
   & > div + input {
-    margin-top: ${spacing.xs}px;
+    margin-top: ${theme.spacing.xs}px;
   }
 `;
 
 const Label = styled.div`
-  font-size: ${text.h6.size}px;
-  font-weight: ${text.h6.weight};
-  color: ${colors.gray1};
+  ${theme.typo.h6};
+  color: ${theme.color.gray1};
 `;
 
 type InputBoxProps = {
@@ -55,39 +54,38 @@ type InputBoxProps = {
 const InputBox = styled.input<InputBoxProps>`
   outline: none;
 
-  border-radius: ${spacing.m}px;
-  border: 1px solid ${colors.gray3};
-  background-color: ${colors.gray7};
-  color: ${colors.gray3};
+  border-radius: ${theme.spacing.md}px;
+  border: 1px solid ${theme.color.gray3};
+  background-color: ${theme.color.gray7};
+  color: ${theme.color.gray3};
 
   padding: 24px 16px;
 
   width: ${({ width }) => WidthSizes[width]};
 
-  font-size: ${text.b4.size}px;
-  font-weight: ${text.b4.weight};
+  ${theme.typo.b4};
 
   &:focus {
-    border: 1px solid ${colors.blue};
-    caret-color: ${colors.blue};
+    border: 1px solid ${theme.color.blue};
+    caret-color: ${theme.color.blue};
   }
 
   &:disabled {
     cursor: not-allowed;
-    border: 1px solid ${colors.gray3};
-    background-color: ${colors.gray5};
-    color: ${colors.gray1};
+    border: 1px solid ${theme.color.gray3};
+    background-color: ${theme.color.gray5};
+    color: ${theme.color.gray1};
   }
 
   ${({ state }) => {
     if (state === "error") {
       return css`
-        border: 1px solid ${colors.redDark1};
+        border: 1px solid ${theme.color.redDark1};
       `;
     }
     if (state === "success") {
       return css`
-        border: 1px solid ${colors.greenDark1};
+        border: 1px solid ${theme.color.greenDark1};
       `;
     }
   }}

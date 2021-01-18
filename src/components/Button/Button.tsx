@@ -1,8 +1,8 @@
 import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, opacity, radius, text } from "../../common/styles";
-import { animations } from "../../common/animations";
+import { theme } from "../../styles/styles";
+import { animations } from "../../styles/animations";
 
 type SizeType =
   | "xxlarge"
@@ -25,8 +25,8 @@ export type ButtonProps = {
 
 export const Button = ({
   size = "xxlarge",
-  backgroundColor = colors.gray1,
-  color = colors.white,
+  backgroundColor = theme.color.gray1,
+  color = theme.color.white,
   label,
   disabled = false,
   loading = false,
@@ -72,7 +72,7 @@ const Container = styled.button<ContainerProps>`
   justify-content: center;
   align-items: center;
 
-  border-radius: ${radius.medium}px;
+  border-radius: ${theme.radius.md}px;
 
   ${({ size }) => buttonSizes[size]};
   background-color: ${({ backgroundColor }) => backgroundColor};
@@ -80,7 +80,7 @@ const Container = styled.button<ContainerProps>`
   cursor: pointer;
 
   &:disabled {
-    opacity: ${opacity.disabled};
+    opacity: ${theme.opacity.disabled};
     cursor: not-allowed;
   }
 
@@ -96,14 +96,12 @@ const Container = styled.button<ContainerProps>`
   }
 
   color: ${({ color }) => color};
-  font-size: ${text.h6.size}px;
-  font-weight: ${text.h6.weight};
+  ${theme.typo.h6};
 
   ${({ size }) => {
     if (size === "xsmall") {
       return css`
-        font-size: ${text.captionTitle.size}px;
-        font-weight: ${text.captionTitle.weight};
+        ${theme.typo.captionTitle};
       `;
     }
   }}
@@ -111,9 +109,9 @@ const Container = styled.button<ContainerProps>`
   ${({ bordered }) =>
     bordered &&
     css`
-      background-color: ${colors.white};
-      border: 1px solid ${colors.gray2};
-      color: ${colors.gray1};
+      background-color: ${theme.color.white};
+      border: 1px solid ${theme.color.gray2};
+      color: ${theme.color.gray1};
     `}
 `;
 
@@ -124,8 +122,7 @@ type LoadingProps = {
 };
 
 const Loading = styled.div<LoadingProps>`
-  font-size: ${text.h2.size}px;
-  font-weight: ${text.h2.weight};
+  ${theme.typo.h2};
 
   display: flex;
 `;

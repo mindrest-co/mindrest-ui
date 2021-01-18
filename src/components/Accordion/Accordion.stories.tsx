@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import styled from "@emotion/styled";
 import { Accordion, AccordionProps } from "./Accordion";
 import { ToggleButton } from "../ToggleButton/ToggleButton";
-import { colors, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export default {
   title: "Components/Accordion",
@@ -65,11 +65,10 @@ const Container = styled.div`
 const NoticeBody = styled.div`
   margin-top: 32px;
   padding-top: 32px;
-  border-top: 1px solid ${colors.gray5};
+  border-top: 1px solid ${theme.color.gray5};
 `;
 
 const NoticeContent = styled.div`
-  font-size: ${text.b3.size}px;
-  font-weight: ${text.b3.weight};
-  color: ${colors.gray2};
+  ${theme.typo.b3};
+  color: ${theme.color.gray2};
 `;

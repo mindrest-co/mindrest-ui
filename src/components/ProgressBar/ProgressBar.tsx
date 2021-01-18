@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export type ProgressBarProps = {
   status: number;
@@ -17,7 +17,7 @@ export const ProgressBar = ({ status }: ProgressBarProps) => {
 const Container = styled.div`
   width: 100%;
   height: 4px;
-  background-color: ${colors.gray5};
+  background-color: ${theme.color.gray5};
 `;
 
 type StatusProps = {
@@ -27,5 +27,5 @@ type StatusProps = {
 const Status = styled.div<StatusProps>`
   width: ${({ status }) => status}%;
   height: 4px;
-  background-color: ${colors.blue};
+  background-color: ${theme.color.blue};
 `;

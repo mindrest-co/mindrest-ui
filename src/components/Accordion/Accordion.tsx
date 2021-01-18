@@ -1,8 +1,7 @@
 import React, { ReactNode, useCallback, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { colors, shadows, spacing, text } from "../../common/styles";
-import { animations } from "../../common/animations";
+import { theme } from "../../styles/styles";
 
 type SizeType = "large" | "medium" | "small";
 type PositionType = "inside" | "outside";
@@ -75,15 +74,15 @@ type HeaderProps = {
 };
 
 const Header = styled.div<HeaderProps>`
-  border-radius: ${spacing.l}px;
+  border-radius: ${theme.spacing.lg}px;
   ${({ actived }) =>
     actived
       ? css`
-          background-color: ${colors.white};
-          ${shadows.m};
+          background-color: ${theme.color.white};
+          ${theme.shadow.md};
         `
       : css`
-          background-color: ${colors.gray6};
+          background-color: ${theme.color.gray6};
         `}
 
   ${({ size }) => textSizes[size]};
@@ -119,18 +118,9 @@ const Children = styled.div<ChildrenProps>`
 // style
 
 const textSizes = {
-  large: css`
-    font-size: ${text.h3.size}px;
-    font-weight: ${text.h3.weight};
-  `,
-  medium: css`
-    font-size: ${text.h4.size}px;
-    font-weight: ${text.h4.weight};
-  `,
-  small: css`
-    font-size: ${text.h6.size}px;
-    font-weight: ${text.h6.weight};
-  `,
+  large: theme.typo.h3,
+  medium: theme.typo.h4,
+  small: theme.typo.h6,
 };
 
 const containerPaddings = {

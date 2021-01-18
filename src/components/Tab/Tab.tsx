@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { colors, spacing, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { Badge } from "../Badge/Badge";
 
 export type TabProps = {
@@ -33,14 +33,14 @@ const Container = styled.div<ContainerProps>`
   justify-content: center;
   align-items: center;
 
-  background-color: ${colors.gray5};
-  color: ${colors.gray3};
+  background-color: ${theme.color.gray5};
+  color: ${theme.color.gray3};
 
   ${({ actived }) =>
     actived &&
     css`
-      background-color: ${colors.gray7};
-      color: ${colors.gray1};
+      background-color: ${theme.color.gray7};
+      color: ${theme.color.gray1};
     `}
 `;
 
@@ -50,12 +50,11 @@ const Content = styled.div`
   align-items: center;
 
   & > div + div {
-    margin-left: ${spacing.xs}px;
+    margin-left: ${theme.spacing.xs}px;
   }
 `;
 
 const Label = styled.div`
   width: 100%;
-  font-size: ${text.h5.size}px;
-  font-weight: ${text.h5.weight};
+  ${theme.typo.h5};
 `;

@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import styled from "@emotion/styled";
 
 import { Color, ColorProps } from "./Color";
-import { colors, ColorType } from "../../common/styles";
+import { theme, ColorType } from "../../styles/styles";
 
 export default {
   title: "Basic/Color",
@@ -38,8 +38,8 @@ export const All = () => {
 export const GrayScale = () => {
   return (
     <Container>
-      {Object.keys(colors).map(
-        c => c.includes("gray") && <Color color={colors[c as ColorType]} />
+      {Object.keys(theme.color).map(
+        c => c.includes("gray") && <Color color={theme.color[c as ColorType]} />
       )}
     </Container>
   );
@@ -48,8 +48,8 @@ export const GrayScale = () => {
 export const BlueScale = () => {
   return (
     <Container>
-      {Object.keys(colors).map(
-        c => c.includes("blue") && <Color color={colors[c as ColorType]} />
+      {Object.keys(theme.color).map(
+        c => c.includes("blue") && <Color color={theme.color[c as ColorType]} />
       )}
     </Container>
   );
@@ -58,8 +58,9 @@ export const BlueScale = () => {
 export const GreenScale = () => {
   return (
     <Container>
-      {Object.keys(colors).map(
-        c => c.includes("green") && <Color color={colors[c as ColorType]} />
+      {Object.keys(theme.color).map(
+        c =>
+          c.includes("green") && <Color color={theme.color[c as ColorType]} />
       )}
     </Container>
   );
@@ -68,8 +69,8 @@ export const GreenScale = () => {
 export const RedScale = () => {
   return (
     <Container>
-      {Object.keys(colors).map(
-        c => c.includes("red") && <Color color={colors[c as ColorType]} />
+      {Object.keys(theme.color).map(
+        c => c.includes("red") && <Color color={theme.color[c as ColorType]} />
       )}
     </Container>
   );

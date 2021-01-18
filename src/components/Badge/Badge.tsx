@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, radius, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 type TypeType = "default" | "pill";
 
@@ -13,8 +13,8 @@ export type BadgeProps = {
 };
 
 export const Badge = ({
-  backgroundColor = colors.redDark1,
-  textColor = colors.white,
+  backgroundColor = theme.color.redDark1,
+  textColor = theme.color.white,
   children,
   type = "default",
 }: BadgeProps) => {
@@ -39,9 +39,8 @@ const Container = styled.div<ContainerProps>`
   padding: 2px 6px;
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ textColor }) => textColor};
-  border-radius: ${radius.small}px;
-  font-size: ${text.badge.size}px;
-  font-weight: ${text.badge.weight};
+  border-radius: ${theme.radius.sm}px;
+  ${theme.typo.badge};
 
   ${({ type }) => typeStyle[type]}
 
@@ -54,11 +53,10 @@ const typeStyle = {
   default: css``,
   pill: css`
     padding: 10px 16px;
-    background-color: ${colors.gray5};
-    color: ${colors.gray1};
-    border: 1px solid ${colors.gray4};
-    border-radius: ${radius.circle}px;
-    font-size: ${text.caption.size}px;
-    font-weight: ${text.caption.weight};
+    background-color: ${theme.color.gray5};
+    color: ${theme.color.gray1};
+    border: 1px solid ${theme.color.gray4};
+    border-radius: ${theme.radius.circle}px;
+    ${theme.typo.caption};
   `,
 };

@@ -1,15 +1,7 @@
 import React, { ReactNode } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import {
-  colors,
-  opacity,
-  radius,
-  shadows,
-  spacing,
-  text,
-  width,
-} from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { Avatar } from "../Avatar/Avatar";
 import { StatusBadge, StatusType } from "../Badge/StatusBadge";
 
@@ -54,10 +46,10 @@ type ContainerProps = {
 };
 
 const Container = styled.div<ContainerProps>`
-  width: ${width.full};
-  padding: ${spacing.xxl}px;
-  border-radius: ${radius.round}px;
-  ${shadows.m};
+  width: ${theme.width.full};
+  padding: ${theme.spacing.xxl}px;
+  border-radius: ${theme.radius.round}px;
+  ${theme.shadow.md};
 
   display: flex;
   align-items: center;
@@ -66,7 +58,7 @@ const Container = styled.div<ContainerProps>`
 
   transition: all 0.3s;
   &:hover {
-    ${shadows.l};
+    ${theme.shadow.lg};
   }
   user-select: none;
 
@@ -74,36 +66,34 @@ const Container = styled.div<ContainerProps>`
     disabled &&
     css`
       cursor: not-allowed;
-      opacity: ${opacity.disabled};
+      opacity: ${theme.opacity.disabled};
     `}
 `;
 
 const ImageContainer = styled.div`
-  margin-right: ${spacing.l}px;
+  margin-right: ${theme.spacing.lg}px;
 `;
 
 const Content = styled.div``;
 
 const TitleContainer = styled.div`
   display: flex;
-  margin-bottom: ${spacing.xs}px;
+  margin-bottom: ${theme.spacing.xs}px;
   align-items: center;
 
   & > div + div {
-    margin-left: ${spacing.m}px;
+    margin-left: ${theme.spacing.md}px;
   }
 `;
 
 const Title = styled.div`
-  font-size: ${text.h4.size}px;
-  font-weight: ${text.h4.weight};
-  color: ${colors.gray1};
+  ${theme.typo.h4};
+  color: ${theme.color.gray1};
 `;
 
 const Subtitle = styled.div`
-  font-size: ${text.b4.size}px;
-  font-weight: ${text.b4.weight};
-  color: ${colors.gray2};
+  ${theme.typo.b4};
+  color: ${theme.color.gray2};
 `;
 
 const Arrow = styled.div`

@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Icon } from "../Icon/Icon";
-import { colors, spacing, text } from "../../common/styles";
-import { css } from "@emotion/react";
+import { theme } from "../../styles/styles";
 
 type StateType = "error" | "success" | "normal";
 type SizeType = "large" | "small";
@@ -45,7 +44,7 @@ const Container = styled.div<ContainerProps>`
   ${({ size }) => textSizes[size]};
 
   & > div + div {
-    margin-left: ${spacing.xs}px;
+    margin-left: ${theme.spacing.xs}px;
   }
 `;
 
@@ -54,20 +53,14 @@ const Text = styled.div``;
 // style
 
 const textSizes = {
-  large: css`
-    font-size: ${text.b4.size}px;
-    font-weight: ${text.b4.weight};
-  `,
-  small: css`
-    font-size: ${text.captionMedium.size}px;
-    font-weight: ${text.captionMedium.weight};
-  `,
+  large: theme.typo.b4,
+  small: theme.typo.captionMedium,
 };
 
 const textColors = {
-  error: colors.redDark1,
-  success: colors.greenDark1,
-  normal: colors.gray3,
+  error: theme.color.redDark1,
+  success: theme.color.greenDark1,
+  normal: theme.color.gray3,
 };
 
 const iconSizes = {

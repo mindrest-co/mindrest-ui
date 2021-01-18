@@ -4,7 +4,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import styled from "@emotion/styled";
 
 import { Typography, TypographyProps } from "./Typography";
-import { text, TextType } from "../../common/styles";
+import { theme, TypoType } from "../../styles/styles";
 
 export default {
   title: "Basic/Typography",
@@ -18,29 +18,31 @@ const TextContent = {
   h2: "Heading 2",
   h3: "Heading 3",
   h4: "Heading 4",
+  h5: "Heading 5",
+  h6: "Heading 6",
   b1: "Body 1",
   b2: "Body 2",
   b3: "Body 3",
   b4: "Body 4",
-  captionTitle: "Caption title",
+  captionTitle: "Caption Title",
+  captionMedium: "Caption Medium",
   caption: "Caption",
+  badge: "Badge",
 };
 
 export const Default = Template.bind({});
 Default.args = {
-  size: text.h1.size,
-  weight: text.h1.weight,
+  size: "h1",
   text: "Heading1",
 };
 
 export const All = () => {
   return (
     <Container>
-      {Object.keys(text).map(value => (
+      {Object.keys(theme.typo).map(size => (
         <Typography
-          size={text[value as TextType].size}
-          weight={text[value as TextType].weight}
-          text={TextContent[value as TextType]}
+          size={size as TypoType}
+          text={TextContent[size as TypoType]}
         />
       ))}
     </Container>

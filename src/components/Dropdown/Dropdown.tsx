@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
-import { colors, radius, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
 
 export type DropdownProps = {
@@ -69,15 +69,15 @@ const DropBox = styled.div<DropBoxProps>`
   align-items: center;
   padding-left: 24px;
 
-  color: ${colors.gray2};
-  background-color: ${colors.gray7};
-  border: 1px solid ${colors.gray3};
-  border-radius: ${radius.medium}px;
+  color: ${theme.color.gray2};
+  background-color: ${theme.color.gray7};
+  border: 1px solid ${theme.color.gray3};
+  border-radius: ${theme.radius.md}px;
 
   ${({ actived }) =>
     actived &&
     css`
-      border-color: ${colors.blue};
+      border-color: ${theme.color.blue};
     `}
 `;
 
@@ -88,19 +88,19 @@ const Items = styled.ul`
   z-index: 100;
 
   & > div {
-    border-left: 1px solid ${colors.gray5};
-    border-right: 1px solid ${colors.gray5};
-    border-top: 1px solid ${colors.gray5};
+    border-left: 1px solid ${theme.color.gray5};
+    border-right: 1px solid ${theme.color.gray5};
+    border-top: 1px solid ${theme.color.gray5};
   }
 
   & > div:first-child {
-    border-top-left-radius: ${radius.medium}px;
-    border-top-right-radius: ${radius.medium}px;
+    border-top-left-radius: ${theme.radius.md}px;
+    border-top-right-radius: ${theme.radius.md}px;
   }
   & > div:last-child {
-    border-bottom-left-radius: ${radius.medium}px;
-    border-bottom-right-radius: ${radius.medium}px;
-    border-bottom: 1px solid ${colors.gray5};
+    border-bottom-left-radius: ${theme.radius.md}px;
+    border-bottom-right-radius: ${theme.radius.md}px;
+    border-bottom: 1px solid ${theme.color.gray5};
   }
 `;
 
@@ -112,13 +112,12 @@ const Item = styled.div`
   align-items: center;
   padding-left: 24px;
 
-  color: ${colors.gray1};
-  background-color: ${colors.gray7};
+  color: ${theme.color.gray1};
+  background-color: ${theme.color.gray7};
 
-  font-size: ${text.b4.size}px;
-  font-weight: ${text.b4.weight};
+  ${theme.typo.b4};
 
   &:hover {
-    background-color: ${colors.blueLight1};
+    background-color: ${theme.color.blueLight1};
   }
 `;

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
+import React from "react";
+import { Meta } from "@storybook/react/types-6-0";
 import styled from "@emotion/styled";
 import { Modal, ModalProps } from "./Modal";
 import { Button } from "../Button/Button";
-import { text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export default {
   title: "Components/Modal",
@@ -30,13 +30,11 @@ const ModalBody = styled.div`
 `;
 
 const ModalTitle = styled.div`
-  font-size: ${text.h3.size}px;
-  font-weight: ${text.h3.weight};
+  ${theme.typo.h3};
   margin-bottom: 10px;
 `;
 
 const ModalContent = styled.div`
-  font-size: ${text.b3.size}px;
-  font-weight: ${text.b3.weight};
+  ${theme.typo.b3};
   margin-bottom: 70px;
 `;

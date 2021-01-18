@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export type ColorProps = {
   /** 원하는 color를 입력합니다. */
@@ -18,7 +18,7 @@ export const Color = ({ color }: ColorProps) => {
 };
 
 const Container = styled.div`
-  border: 0.5px solid ${colors.gray5};
+  border: 0.5px solid ${theme.color.gray5};
   border-radius: 4px;
   overflow: hidden;
 `;

@@ -1,7 +1,7 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
+import { Meta } from "@storybook/react/types-6-0";
 
-import { Menu, MenuProps } from "./Menu";
+import { Menu } from "./Menu";
 import { MenuItem } from "./MenuItem";
 
 export default {

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Icon } from "../Icon/Icon";
-import { radius, shadows, spacing, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 export type ToastProps = {
   text: string;
@@ -28,18 +28,17 @@ const Container = styled.div`
   align-items: center;
 
   width: 710px;
-  padding: ${spacing.xl}px;
-  ${shadows.m};
-  border-radius: ${radius.medium}px;
+  padding: ${theme.spacing.xl}px;
+  ${theme.shadow.md};
+  border-radius: ${theme.radius.md}px;
 
   position: fixed;
-  left: ${spacing.xl}px;
-  bottom: ${spacing.xl}px;
+  left: ${theme.spacing.xl}px;
+  bottom: ${theme.spacing.xl}px;
 `;
 
 const Text = styled.div`
-  font-size: ${text.h6.size}px;
-  font-weight: ${text.h6.weight};
+  ${theme.typo.h6};
 `;
 
 const CloseButton = styled.div``;

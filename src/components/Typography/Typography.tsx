@@ -1,27 +1,23 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { theme, TypoType } from "../../styles/styles";
 
 export type TypographyProps = {
-  /** Font Size */
-  size: number;
-  /** Font Weight */
-  weight: number;
-  /** Text */
+  size: TypoType;
   text: string;
 };
 
 /**Typography 정의 */
-export const Typography = ({ size, weight, text }: TypographyProps) => {
+export const Typography = ({ size, text }: TypographyProps) => {
   return (
-    <Container size={size} weight={weight}>
+    <Container size={size}>
       <Title>{text}</Title>
     </Container>
   );
 };
 
-const Container = styled.div<{ size: number; weight: number }>`
-  font-size: ${({ size }) => size}px;
-  font-weight: ${({ weight }) => weight};
+const Container = styled.div<{ size: TypoType }>`
+  ${({ size }) => theme.typo[size]};
   display: flex;
 `;
 

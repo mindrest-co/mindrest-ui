@@ -1,7 +1,6 @@
 import React from "react";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors, spacing, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { Card, CardProps } from "../Card/Card";
 
 export type CardListProps = {
@@ -24,14 +23,13 @@ export const CardList = ({ label, items }: CardListProps) => {
 
 const Container = styled.div`
   & > div + div {
-    margin-top: ${spacing.l}px;
+    margin-top: ${theme.spacing.lg}px;
   }
-  margin-bottom: ${spacing.xl}px;
+  margin-bottom: ${theme.spacing.xl}px;
 `;
 
 const Label = styled.div`
-  margin-bottom: ${spacing.l}px;
-  color: ${colors.gray2};
-  font-size: ${text.b4.size}px;
-  font-weight: ${text.b4.weight};
+  margin-bottom: ${theme.spacing.lg}px;
+  color: ${theme.color.gray2};
+  ${theme.typo.b4};
 `;

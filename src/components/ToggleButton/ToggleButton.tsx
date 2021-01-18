@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors, radius, shadows, text } from "../../common/styles";
+import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
 
 type DirectionType = "horizontal" | "vertical";
@@ -49,48 +49,48 @@ type ContainerProps = {
 const Container = styled.div<ContainerProps>`
   width: 100%;
   display: flex;
-  border-radius: ${radius.large}px;
+  border-radius: ${theme.radius.lg}px;
   overflow: hideen;
 
   flex-direction: ${({ direction }) =>
     direction === "vertical" ? "column" : "row"};
 
-  ${shadows.m};
+  ${theme.shadow.md};
 
   ${({ direction }) =>
     direction === "vertical"
       ? css`
           & > div {
-            border-left: 1px solid ${colors.gray5};
-            border-right: 1px solid ${colors.gray5};
-            border-top: 1px solid ${colors.gray5};
+            border-left: 1px solid ${theme.color.gray5};
+            border-right: 1px solid ${theme.color.gray5};
+            border-top: 1px solid ${theme.color.gray5};
           }
 
           & > div:first-child {
-            border-top-left-radius: ${radius.large}px;
-            border-top-right-radius: ${radius.large}px;
+            border-top-left-radius: ${theme.radius.lg}px;
+            border-top-right-radius: ${theme.radius.lg}px;
           }
           & > div:last-child {
-            border-bottom-left-radius: ${radius.large}px;
-            border-bottom-right-radius: ${radius.large}px;
-            border-bottom: 1px solid ${colors.gray5};
+            border-bottom-left-radius: ${theme.radius.lg}px;
+            border-bottom-right-radius: ${theme.radius.lg}px;
+            border-bottom: 1px solid ${theme.color.gray5};
           }
         `
       : css`
           & > div {
-            border-top: 1px solid ${colors.gray5};
-            border-bottom: 1px solid ${colors.gray5};
-            border-left: 1px solid ${colors.gray5};
+            border-top: 1px solid ${theme.color.gray5};
+            border-bottom: 1px solid ${theme.color.gray5};
+            border-left: 1px solid ${theme.color.gray5};
           }
 
           & > div:first-child {
-            border-top-left-radius: ${radius.large}px;
-            border-bottom-left-radius: ${radius.large}px;
+            border-top-left-radius: ${theme.radius.lg}px;
+            border-bottom-left-radius: ${theme.radius.lg}px;
           }
           & > div:last-child {
-            border-top-right-radius: ${radius.large}px;
-            border-bottom-right-radius: ${radius.large}px;
-            border-right: 1px solid ${colors.gray5};
+            border-top-right-radius: ${theme.radius.lg}px;
+            border-bottom-right-radius: ${theme.radius.lg}px;
+            border-right: 1px solid ${theme.color.gray5};
           }
         `}
 `;
@@ -104,18 +104,18 @@ type ItemProps = {
 
 const Item = styled.div<ItemProps>`
   width: ${({ width }) => `${width}%`};
-  background-color: ${colors.white};
+  background-color: ${theme.color.white};
   ${({ size }) => itemPaddings[size]};
   ${({ size }) => textSizes[size]};
   ${({ actived }) =>
     actived
       ? css`
-          background-color: ${colors.blue};
-          color: ${colors.white};
+          background-color: ${theme.color.blue};
+          color: ${theme.color.white};
         `
       : css`
-          background-color: ${colors.white};
-          color: ${colors.gray1};
+          background-color: ${theme.color.white};
+          color: ${theme.color.gray1};
         `}
 
   display: flex;
@@ -139,12 +139,6 @@ const itemPaddings = {
 };
 
 const textSizes = {
-  large: css`
-    font-size: ${text.h4.size}px;
-    font-weight: ${text.h4.weight};
-  `,
-  small: css`
-    font-size: ${text.h6.size}px;
-    font-weight: ${text.h6.weight};
-  `,
+  large: theme.typo.b4,
+  small: theme.typo.h6,
 };

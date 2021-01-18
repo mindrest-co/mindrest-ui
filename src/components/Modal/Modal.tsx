@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { colors, radius, shadows } from "../../common/styles";
+import { theme } from "../../styles/styles";
 
 type SizeType = "large" | "small";
 
@@ -56,9 +56,9 @@ type ModalBoxProps = {
 const ModalBox = styled.div<ModalBoxProps>`
   position: absolute;
   ${({ size }) => containerPaddings[size]};
-  ${shadows.m};
-  border-radius: ${radius.round}px;
-  background-color: ${colors.white};
+  ${theme.shadow.md};
+  border-radius: ${theme.radius.round}px;
+  background-color: ${theme.color.white};
 `;
 
 // style
