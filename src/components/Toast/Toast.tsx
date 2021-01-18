@@ -32,7 +32,7 @@ const Container = styled.div`
   ${shadows.m};
   border-radius: ${radius.medium}px;
 
-  position: absolute;
+  position: fixed;
   left: ${spacing.xl}px;
   bottom: ${spacing.xl}px;
 `;
