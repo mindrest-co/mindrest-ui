@@ -9,6 +9,7 @@ type SizeType = "small" | "xsmall";
 export type StatusBadgeProps = {
   status: StatusType;
   size?: SizeType;
+  onClick?: () => void;
 };
 
 const text = {
@@ -18,9 +19,13 @@ const text = {
   none: "미검사",
 };
 
-export const StatusBadge = ({ status, size = "xsmall" }: StatusBadgeProps) => {
+export const StatusBadge = ({
+  status,
+  size = "xsmall",
+  onClick = () => {},
+}: StatusBadgeProps) => {
   return (
-    <Container status={status} size={size}>
+    <Container status={status} size={size} onClick={onClick}>
       <Text>{text[status]}</Text>
     </Container>
   );

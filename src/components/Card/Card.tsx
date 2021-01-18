@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { theme } from "../../styles/styles";
@@ -11,6 +11,7 @@ export type CardProps = {
   subtitle?: string;
   disabled?: boolean;
   status?: StatusType;
+  onClick?: () => void;
 };
 
 export const Card = ({
@@ -19,9 +20,10 @@ export const Card = ({
   subtitle,
   disabled = false,
   status,
+  onClick = () => {},
 }: CardProps) => {
   return (
-    <Container disabled={disabled}>
+    <Container disabled={disabled} onClick={onClick}>
       {image && (
         <ImageContainer>
           <Avatar image={image} size="large" />

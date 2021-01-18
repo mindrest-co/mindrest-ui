@@ -10,11 +10,15 @@ export type IconProps = {
 };
 
 export const Icon = ({
-  size = 24,
+  size = 128,
   color = theme.color.gray1,
   name,
 }: IconProps) => {
-  return <Container size={size} color={color}></Container>;
+  return (
+    <Container size={size} color={color}>
+      <img src="/up.svg" width={size} height={size} color={color} />
+    </Container>
+  );
 };
 
 type ContainerProps = {
@@ -27,6 +31,5 @@ const Container = styled.div<ContainerProps>`
     width: ${size}px;
     height: ${size}px;
   `}
-  background-color:red;
   color: ${({ color }) => color};
 `;

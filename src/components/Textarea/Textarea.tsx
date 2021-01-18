@@ -6,13 +6,24 @@ import { css } from "@emotion/react";
 export type TextareaProps = {
   placeholder?: string;
   disabled?: boolean;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
 export const Textarea = ({
   placeholder = "내용을 입력해주세요.",
   disabled = false,
+  value,
+  onChange,
 }: TextareaProps) => {
-  return <Container placeholder={placeholder} disabled={disabled} />;
+  return (
+    <Container
+      placeholder={placeholder}
+      disabled={disabled}
+      value={value}
+      onChange={onChange}
+    />
+  );
 };
 
 type ContainerProps = {

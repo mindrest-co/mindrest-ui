@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meta } from "@storybook/react/types-6-0";
 
 import { Menu } from "./Menu";
@@ -9,13 +9,22 @@ export default {
   component: Menu,
 } as Meta;
 
+const menuItems = ["검사하기", "검사결과", "공지사항", "자주 묻는 질문"];
+
 export const Default = () => {
-  return (
-    <Menu>
-      <MenuItem label="검사하기" actived />
-      <MenuItem label="검사결과" />
-      <MenuItem label="공지사항" />
-      <MenuItem label="자주 묻는 질문" />
-    </Menu>
-  );
+  const [select, setSelect] = useState(0);
+  const onItemClick = (id: number) => {
+    setSelect(id);
+  };
+
+  const renderItems = () =>
+    menuItems.map((item, index) => (
+      <MenuItem
+        label={item}
+        actived={index === select}
+        onClick={() => onItemClick(index)}
+      />
+    ));
+
+  return <Menu>{renderItems()}</Menu>;
 };

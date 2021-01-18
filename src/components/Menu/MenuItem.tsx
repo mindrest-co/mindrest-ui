@@ -7,11 +7,16 @@ import { theme } from "../../styles/styles";
 export type MenuItemProps = {
   label: string;
   actived?: boolean;
+  onClick?: () => void;
 };
 
-export const MenuItem = ({ label, actived = false }: MenuItemProps) => {
+export const MenuItem = ({
+  label,
+  actived = false,
+  onClick,
+}: MenuItemProps) => {
   return (
-    <Container actived={actived}>
+    <Container actived={actived} onClick={onClick}>
       {actived && <ActiveBar />}
       <Icon size={24} />
       <Label>{label}</Label>

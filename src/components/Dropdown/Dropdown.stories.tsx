@@ -9,11 +9,10 @@ export default {
 
 export const Default = () => {
   const [select, setSelect] = useState(0);
+  const onClick = (id: number) => {
+    setSelect(id);
+  };
   return (
-    <Dropdown
-      items={["의사", "간호사"]}
-      select={select}
-      onClick={(id: number) => setSelect(id)}
-    />
+    <Dropdown items={["의사", "간호사"]} select={select} onClick={onClick} />
   );
 };

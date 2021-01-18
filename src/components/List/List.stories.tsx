@@ -10,30 +10,41 @@ export default {
   component: List,
 } as Meta;
 
-const renderListItem = (actived?: boolean) => (
-  <ListItem title="홍길동(M 24)" subtitle="123456789" actived={actived} />
-);
+const itemsArray = [
+  { title: "홍길동(M 24)", subtitle: "123456789" },
+  { title: "홍길동(M 24)", subtitle: "123456789" },
+  { title: "홍길동(M 24)", subtitle: "123456789" },
+  { title: "홍길동(M 24)", subtitle: "123456789" },
+];
 
 export const Default = () => {
   const [actived, setActived] = useState(false);
-  return (
-    <List
-      header={
-        <ListAccordion
-          title="👨🏻‍⚕️ 홍길동 선생님"
-          onClick={() => setActived(prev => !prev)}
-          actived={actived}
-        />
-      }
-      items={
-        <>
-          {renderListItem(true)}
-          {renderListItem()}
-          {renderListItem()}
-          {renderListItem()}
-        </>
-      }
+  const [select, setSelect] = useState(0);
+  const onItemClick = (id: number) => {
+    setSelect(id);
+  };
+
+  const renderHeader = () => (
+    <ListAccordion
+      title="👨🏻‍⚕️ 홍길동 선생님"
+      onClick={() => setActived(prev => !prev)}
       actived={actived}
     />
+  );
+
+  const renderItems = () =>
+    itemsArray.map((item, index) => (
+      <ListItem
+        title={item.title}
+        subtitle={item.subtitle}
+        actived={index === select}
+        onClick={() => onItemClick(index)}
+      />
+    ));
+
+  return (
+    <List header={renderHeader()} actived={actived}>
+      {renderItems()}
+    </List>
   );
 };

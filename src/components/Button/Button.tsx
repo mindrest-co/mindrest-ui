@@ -21,6 +21,7 @@ export type ButtonProps = {
   disabled?: boolean;
   loading?: boolean;
   bordered?: boolean;
+  onClick?: () => void;
 };
 
 export const Button = ({
@@ -31,6 +32,7 @@ export const Button = ({
   disabled = false,
   loading = false,
   bordered = false,
+  onClick = () => {},
 }: ButtonProps) => {
   const renderLoading = () => {
     return (
@@ -51,6 +53,7 @@ export const Button = ({
       disabled={disabled}
       loading={loading}
       bordered={bordered}
+      onClick={onClick}
     >
       {loading && renderLoading()}
       {!loading && <Label>{label}</Label>}

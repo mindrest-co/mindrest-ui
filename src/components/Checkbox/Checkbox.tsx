@@ -18,7 +18,7 @@ export const Checkbox = ({
   onClick = () => {},
 }: CheckboxProps) => {
   return (
-    <Container onClick={onClick} disabled={disabled}>
+    <Container disabled={disabled} onClick={onClick}>
       <Box actived={actived}>
         {actived && <Icon size={24} color={theme.color.white} />}
       </Box>
@@ -36,9 +36,13 @@ const Container = styled.div<ContainerProps>`
   justify-content: flex-start;
   align-items: center;
 
+  cursor: pointer;
+  user-select: none;
+
   ${({ disabled }) =>
     disabled &&
     css`
+      cursor: not-allowed;
       opacity: 0.3;
     `}
 `;

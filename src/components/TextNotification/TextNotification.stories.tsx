@@ -17,6 +17,26 @@ const Template: Story<TextNotificationProps> = args => (
 
 export const Default = Template.bind({});
 
+export const States = (args: TextNotificationProps) => {
+  args.text = "정확한 정보를 입력해주세요.";
+  return (
+    <Container>
+      <Item>
+        <Title>Error</Title>
+        <TextNotification {...args} state="error" />
+      </Item>
+      <Item>
+        <Title>Normal</Title>
+        <TextNotification {...args} state="normal" />
+      </Item>
+      <Item>
+        <Title>Success</Title>
+        <TextNotification {...args} state="success" />
+      </Item>
+    </Container>
+  );
+};
+
 export const Sizes = (args: TextNotificationProps) => {
   args.text = "정확한 정보를 입력해주세요.";
   return (

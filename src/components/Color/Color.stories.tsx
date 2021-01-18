@@ -1,16 +1,14 @@
 import React from "react";
-import { Story, Meta } from "@storybook/react/types-6-0";
+import { Meta } from "@storybook/react/types-6-0";
 import styled from "@emotion/styled";
 
-import { Color, ColorProps } from "./Color";
+import { Color } from "./Color";
 import { theme, ColorType } from "../../styles/styles";
 
 export default {
   title: "Basic/Color",
   component: Color,
 } as Meta;
-
-const Template: Story<ColorProps> = args => <Color {...args} />;
 
 export const All = () => {
   return (

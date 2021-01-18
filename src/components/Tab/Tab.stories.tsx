@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import styled from "@emotion/styled";
 import { Tab, TabProps } from "./Tab";
@@ -23,13 +23,23 @@ WithCount.args = {
   count: 10,
 };
 
+const tabItems = ["진료대기", "진료완료"];
+
 export const Tabs = () => {
-  return (
-    <Menu>
-      <Tab label="진료대기" actived={true} />
-      <Tab label="진료완료" count={1} actived={false} />
-    </Menu>
-  );
+  const [select, setSelect] = useState(0);
+  const onTabClick = (id: number) => {
+    setSelect(id);
+  };
+  const renderItems = () =>
+    tabItems.map((item, index) => (
+      <Tab
+        label={item}
+        actived={index === select}
+        onClick={() => onTabClick(index)}
+      />
+    ));
+
+  return <Menu>{renderItems()}</Menu>;
 };
 
 const Menu = styled.div`

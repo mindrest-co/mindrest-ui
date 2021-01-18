@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import styled from "@emotion/styled";
 import { Accordion, AccordionProps } from "./Accordion";
@@ -21,8 +21,16 @@ Default.args = {
 };
 
 export const WithToggleButtonVertical = () => {
+  const [actived, setActived] = useState(true);
+  const onHeaderClick = () => {
+    setActived(prev => !prev);
+  };
   return (
-    <Accordion actived={true} title="질문 입니다.">
+    <Accordion
+      actived={actived}
+      onHeaderClick={onHeaderClick}
+      title="질문 입니다."
+    >
       <Container>
         <ToggleButton items={["1번", "2번", "3번"]} select={1} />
       </Container>
@@ -31,8 +39,16 @@ export const WithToggleButtonVertical = () => {
 };
 
 export const WithToggleButtonHorizontal = () => {
+  const [actived, setActived] = useState(true);
+  const onHeaderClick = () => {
+    setActived(prev => !prev);
+  };
   return (
-    <Accordion actived={true} title="질문 입니다.">
+    <Accordion
+      actived={actived}
+      onHeaderClick={onHeaderClick}
+      title="질문 입니다."
+    >
       <Container>
         <ToggleButton
           items={["1번", "2번", "3번"]}
@@ -45,8 +61,17 @@ export const WithToggleButtonHorizontal = () => {
 };
 
 export const Notice = () => {
+  const [actived, setActived] = useState(true);
+  const onHeaderClick = () => {
+    setActived(prev => !prev);
+  };
   return (
-    <Accordion actived={true} title="공지 사항 입니다." position="inside">
+    <Accordion
+      actived={actived}
+      onHeaderClick={onHeaderClick}
+      title="공지 사항 입니다."
+      position="inside"
+    >
       <NoticeBody>
         <NoticeContent>
           공지사항 내용입니다. 공지사항의 내용입니다. 공지사항 내용입니다.

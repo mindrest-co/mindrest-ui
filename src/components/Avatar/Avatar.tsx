@@ -11,6 +11,7 @@ export type AvatarProps = {
   size?: SizeType;
   name?: string;
   role?: RoleType | undefined;
+  onClick?: () => void;
 };
 
 const defaultImage = "/assets/images/person.jpg";
@@ -20,9 +21,10 @@ export const Avatar = ({
   size = "xlarge",
   name,
   role,
+  onClick = () => {},
 }: AvatarProps) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Image src={image} alt="avatar" size={size} />
       {(name || role) && (
         <Info size={size}>

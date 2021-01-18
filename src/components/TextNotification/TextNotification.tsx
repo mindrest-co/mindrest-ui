@@ -10,15 +10,17 @@ export type TextNotificationProps = {
   text: string;
   state?: StateType;
   size?: SizeType;
+  onClick?: () => void;
 };
 
 export const TextNotification = ({
   text,
   state = "normal",
   size = "large",
+  onClick = () => {},
 }: TextNotificationProps) => {
   return (
-    <Container state={state} size={size}>
+    <Container state={state} size={size} onClick={onClick}>
       {state === "error" && (
         <Icon name="error" color={textColors[state]} size={iconSizes[size]} />
       )}

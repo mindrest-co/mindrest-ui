@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { theme } from "../../styles/styles";
+import { css } from "@emotion/react";
 
-export type BackTopProps = {};
+type SizeType = "large" | "small";
 
-export const BackTop = ({}: BackTopProps) => {
+export type BackTopProps = {
+  size?: SizeType;
+};
+
+export const BackTop = ({ size = "large" }: BackTopProps) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -28,7 +33,7 @@ export const BackTop = ({}: BackTopProps) => {
   };
 
   return (
-    <Container show={show} onClick={onScrollTop}>
+    <Container show={show} size={size} onClick={onScrollTop}>
       ⬆
     </Container>
   );
@@ -36,6 +41,7 @@ export const BackTop = ({}: BackTopProps) => {
 
 type ContainerProps = {
   show: boolean;
+  size: SizeType;
 };
 
 const Container = styled.button<ContainerProps>`
@@ -44,8 +50,7 @@ const Container = styled.button<ContainerProps>`
   cursor: pointer;
   ${theme.shadow.lg};
   border-radius: ${theme.radius.circle}px;
-  width: 60px;
-  height: 60px;
+  ${({ size }) => sizes[size]};
 
   display: flex;
   justify-content: center;
@@ -58,3 +63,16 @@ const Container = styled.button<ContainerProps>`
   transition: all 0.3s ease-in-out;
   opacity: ${({ show }) => (show ? 1 : 0)};
 `;
+
+const sizes = {
+  large: css`
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  `,
+  small: css`
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  `,
+};

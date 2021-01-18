@@ -6,14 +6,15 @@ import { theme } from "../../styles/styles";
 export type ToastProps = {
   text: string;
   actived?: boolean;
+  onClick?: () => void;
 };
 
-export const Toast = ({ text, actived }: ToastProps) => {
+export const Toast = ({ text, actived, onClick = () => {} }: ToastProps) => {
   if (!actived) {
     return null;
   }
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Text>{text}</Text>
       <CloseButton>
         <Icon />

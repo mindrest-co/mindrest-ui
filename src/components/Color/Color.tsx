@@ -3,11 +3,9 @@ import styled from "@emotion/styled";
 import { theme } from "../../styles/styles";
 
 export type ColorProps = {
-  /** 원하는 color를 입력합니다. */
   color: string;
 };
 
-/** Color 정의 입니다. */
 export const Color = ({ color }: ColorProps) => {
   return (
     <Container>

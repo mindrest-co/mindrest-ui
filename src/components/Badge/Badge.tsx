@@ -10,6 +10,7 @@ export type BadgeProps = {
   textColor?: string;
   children: ReactNode;
   type?: TypeType;
+  onClick?: () => void;
 };
 
 export const Badge = ({
@@ -17,12 +18,14 @@ export const Badge = ({
   textColor = theme.color.white,
   children,
   type = "default",
+  onClick = () => {},
 }: BadgeProps) => {
   return (
     <Container
       backgroundColor={backgroundColor}
       textColor={textColor}
       type={type}
+      onClick={onClick}
     >
       {children}
     </Container>

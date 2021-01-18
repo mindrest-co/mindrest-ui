@@ -3,11 +3,11 @@ import styled from "@emotion/styled";
 
 export type ListProps = {
   header: ReactNode;
-  items: ReactNode;
+  children: ReactNode;
   actived?: boolean;
 };
 
-export const List = ({ header, items, actived = true }: ListProps) => {
+export const List = ({ header, children, actived = true }: ListProps) => {
   const itemsRef = useRef<HTMLDivElement>(null);
 
   const toggleItems = () => {
@@ -27,7 +27,7 @@ export const List = ({ header, items, actived = true }: ListProps) => {
   return (
     <Container>
       <Header>{header}</Header>
-      <Items ref={itemsRef}>{items}</Items>
+      <Items ref={itemsRef}>{children}</Items>
     </Container>
   );
 };

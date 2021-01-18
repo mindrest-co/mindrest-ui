@@ -10,6 +10,7 @@ export type ModalProps = {
   size?: SizeType;
   dimmed?: boolean;
   actived: boolean;
+  onOverlayClick?: () => void;
 };
 
 export const Modal = ({
@@ -17,13 +18,14 @@ export const Modal = ({
   size = "large",
   dimmed = true,
   actived,
+  onOverlayClick = () => {},
 }: ModalProps) => {
   if (!actived) {
     return null;
   }
   return (
     <Container>
-      {dimmed && <Overlay />}
+      {dimmed && <Overlay onClick={onOverlayClick} />}
       <ModalBox size={size}>{children}</ModalBox>
     </Container>
   );

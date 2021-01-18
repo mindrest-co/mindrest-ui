@@ -9,6 +9,7 @@ type SizeType = "small" | "xsmall";
 export type RoleBadgeProps = {
   role: RoleType;
   size?: SizeType;
+  onClick?: () => void;
 };
 
 const text = {
@@ -17,9 +18,13 @@ const text = {
   nurse: "간호사",
 };
 
-export const RoleBadge = ({ role, size = "xsmall" }: RoleBadgeProps) => {
+export const RoleBadge = ({
+  role,
+  size = "xsmall",
+  onClick = () => {},
+}: RoleBadgeProps) => {
   return (
-    <Container role={role} size={size}>
+    <Container role={role} size={size} onClick={onClick}>
       <Text>{text[role]}</Text>
     </Container>
   );

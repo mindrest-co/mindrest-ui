@@ -12,6 +12,7 @@ export type TextButtonProps = {
   icon?: string;
   color?: string;
   disabled?: boolean;
+  onClick?: () => void;
 };
 
 export const TextButton = ({
@@ -20,9 +21,10 @@ export const TextButton = ({
   icon,
   color = theme.color.gray1,
   disabled = false,
+  onClick = () => {},
 }: TextButtonProps) => {
   return (
-    <Container size={size} color={color} disabled={disabled}>
+    <Container size={size} color={color} disabled={disabled} onClick={onClick}>
       <TextContainer>{text}</TextContainer>
       {icon && (
         <IconContainer>

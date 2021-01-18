@@ -11,6 +11,7 @@ export type ListItemProps = {
   subtitle?: string;
   actived?: boolean;
   notice?: boolean;
+  onClick?: () => void;
 };
 
 const defaultImage = "/assets/images/person.jpg";
@@ -21,9 +22,10 @@ export const ListItem = ({
   subtitle,
   actived = false,
   notice = false,
+  onClick = () => {},
 }: ListItemProps) => {
   return (
-    <Container actived={actived}>
+    <Container actived={actived} onClick={onClick}>
       {actived && <ActiveBar />}
       {avatar && <Avatar size="small" />}
       {title && <Title actived={actived}>{title}</Title>}

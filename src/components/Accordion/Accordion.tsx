@@ -13,6 +13,7 @@ export type AccordionProps = {
   size?: SizeType;
   children: ReactNode;
   position?: PositionType;
+  onHeaderClick?: () => void;
 };
 
 export const Accordion = ({
@@ -22,6 +23,7 @@ export const Accordion = ({
   size = "medium",
   children,
   position = "outside",
+  onHeaderClick = () => {},
 }: AccordionProps) => {
   const childrenRef = useRef<HTMLDivElement>(null);
 
@@ -48,7 +50,12 @@ export const Accordion = ({
 
   return (
     <Container>
-      <Header actived={actived} disabled={disabled} size={size}>
+      <Header
+        actived={actived}
+        disabled={disabled}
+        size={size}
+        onClick={onHeaderClick}
+      >
         <Title>{title}</Title>
         {position === "inside" && (
           <Children ref={childrenRef} position={position}>

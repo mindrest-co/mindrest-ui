@@ -8,11 +8,17 @@ export type TabProps = {
   label: string;
   count?: number;
   actived?: boolean;
+  onClick?: () => void;
 };
 
-export const Tab = ({ label, count, actived = false }: TabProps) => {
+export const Tab = ({
+  label,
+  count,
+  actived = false,
+  onClick = () => {},
+}: TabProps) => {
   return (
-    <Container actived={actived}>
+    <Container actived={actived} onClick={onClick}>
       <Content>
         <Label>{label}</Label>
         {count && <Badge>{count}</Badge>}

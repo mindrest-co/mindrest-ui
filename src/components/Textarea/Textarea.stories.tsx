@@ -1,16 +1,38 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
+import React, { useState } from "react";
+import { Meta } from "@storybook/react/types-6-0";
 
-import { Textarea, TextareaProps } from "./Textarea";
+import { Textarea } from "./Textarea";
 
 export default {
   title: "Components/Textarea",
   component: Textarea,
-  args: {
-    label: "Check",
-  },
 } as Meta;
 
-const Template: Story<TextareaProps> = args => <Textarea {...args} />;
+export const Default = () => {
+  const [value, setValue] = useState("");
+  const onValueChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setValue(event.target.value);
+  };
+  return (
+    <Textarea
+      placeholder="내용을 입력해주세요."
+      value={value}
+      onChange={onValueChange}
+    />
+  );
+};
 
-export const Default = Template.bind({});
+export const Disabled = () => {
+  const [value, setValue] = useState("");
+  const onValueChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setValue(event.target.value);
+  };
+  return (
+    <Textarea
+      placeholder="내용을 입력해주세요."
+      value={value}
+      onChange={onValueChange}
+      disabled={true}
+    />
+  );
+};

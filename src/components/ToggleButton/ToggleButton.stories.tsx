@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import styled from "@emotion/styled";
 import { ToggleButton, ToggleButtonProps } from "./ToggleButton";
 
 export default {
