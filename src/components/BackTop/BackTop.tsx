@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
+import { Icon } from "../Icon/Icon";
+import { icons } from "../../styles/icons";
 
 type SizeType = "large" | "small";
 
@@ -34,7 +36,7 @@ export const BackTop = ({ size = "large" }: BackTopProps) => {
 
   return (
     <Container show={show} size={size} onClick={onScrollTop}>
-      ⬆
+      <Icon name={icons.chevron.up} size={iconSizes[size]} />
     </Container>
   );
 };
@@ -68,11 +70,14 @@ const sizes = {
   large: css`
     width: 60px;
     height: 60px;
-    font-size: 30px;
   `,
   small: css`
     width: 24px;
     height: 24px;
-    font-size: 12px;
   `,
+};
+
+const iconSizes = {
+  large: 30,
+  small: 12,
 };

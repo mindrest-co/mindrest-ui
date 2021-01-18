@@ -2,6 +2,8 @@ import React, { ReactNode, useCallback, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { theme } from "../../styles/styles";
+import { Icon } from "../Icon/Icon";
+import { icons } from "../../styles/icons";
 
 type SizeType = "large" | "medium" | "small";
 type PositionType = "inside" | "outside";
@@ -56,7 +58,12 @@ export const Accordion = ({
         size={size}
         onClick={onHeaderClick}
       >
-        <Title>{title}</Title>
+        <Content>
+          <Title>{title}</Title>
+          <Arrow actived={actived}>
+            <Icon name={icons.chevron.down} size={24} />
+          </Arrow>
+        </Content>
         {position === "inside" && (
           <Children ref={childrenRef} position={position}>
             {children}
@@ -102,7 +109,22 @@ const Header = styled.div<HeaderProps>`
     `}
 `;
 
+const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const Title = styled.div``;
+
+const Arrow = styled.div<{ actived: boolean }>`
+  transition: all 0.3s;
+  ${({ actived }) =>
+    actived &&
+    css`
+      transform: rotate(180deg);
+    `}
+`;
 
 type ChildrenProps = {
   position: PositionType;

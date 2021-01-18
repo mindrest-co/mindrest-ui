@@ -1,35 +1,19 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 import { theme } from "../../styles/styles";
 
 export type IconProps = {
   size?: number;
   color?: string;
-  name?: string;
+  name: string;
 };
 
 export const Icon = ({
-  size = 128,
+  size = 24,
   color = theme.color.gray1,
   name,
 }: IconProps) => {
-  return (
-    <Container size={size} color={color}>
-      <img src="/up.svg" width={size} height={size} color={color} />
-    </Container>
-  );
+  return <Container src={name} width={size} height={size} color={color} />;
 };
 
-type ContainerProps = {
-  size: number;
-  color: string;
-};
-
-const Container = styled.div<ContainerProps>`
-  ${({ size }) => css`
-    width: ${size}px;
-    height: ${size}px;
-  `}
-  color: ${({ color }) => color};
-`;
+const Container = styled.img``;

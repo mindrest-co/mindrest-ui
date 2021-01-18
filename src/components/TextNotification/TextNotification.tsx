@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Icon } from "../Icon/Icon";
 import { theme } from "../../styles/styles";
+import { icons } from "../../styles/icons";
 
 type StateType = "error" | "success" | "normal";
 type SizeType = "large" | "small";
@@ -22,10 +23,18 @@ export const TextNotification = ({
   return (
     <Container state={state} size={size} onClick={onClick}>
       {state === "error" && (
-        <Icon name="error" color={textColors[state]} size={iconSizes[size]} />
+        <Icon
+          name={icons.alertCircle}
+          color={textColors[state]}
+          size={iconSizes[size]}
+        />
       )}
       {state === "success" && (
-        <Icon name="success" color={textColors[state]} size={iconSizes[size]} />
+        <Icon
+          name={icons.checkCircle}
+          color={textColors[state]}
+          size={iconSizes[size]}
+        />
       )}
       <Text>{text}</Text>
     </Container>
@@ -45,9 +54,10 @@ const Container = styled.div<ContainerProps>`
   color: ${({ state }) => textColors[state]};
   ${({ size }) => textSizes[size]};
 
-  & > div + div {
+  & > img + div {
     margin-left: ${theme.spacing.xs}px;
   }
+  text-align: center;
 `;
 
 const Text = styled.div``;

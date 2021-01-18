@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { Icon } from "../Icon/Icon";
 import { theme } from "../../styles/styles";
 import { css } from "@emotion/react";
+import { icons } from "../../styles/icons";
 
 export type CheckboxProps = {
   label: string;
@@ -19,8 +20,9 @@ export const Checkbox = ({
 }: CheckboxProps) => {
   return (
     <Container disabled={disabled} onClick={onClick}>
-      <Box actived={actived}>
-        {actived && <Icon size={24} color={theme.color.white} />}
+      <Box>
+        {actived && <Icon size={28} name={icons.checkbox.active} />}
+        {!actived && <Icon size={28} name={icons.checkbox.inactive} />}
       </Box>
       <Label>{label}</Label>
     </Container>
@@ -47,25 +49,7 @@ const Container = styled.div<ContainerProps>`
     `}
 `;
 
-type BoxProps = {
-  actived: boolean;
-};
-
-const Box = styled.div<BoxProps>`
-  width: 28px;
-  height: 28px;
-  border-radius: ${theme.spacing.xs}px;
-
-  ${({ actived }) =>
-    actived
-      ? css`
-          background-color: ${theme.color.blue};
-        `
-      : css`
-          background-color: ${theme.color.white};
-          border: 2px solid ${theme.color.gray3};
-        `}
-
+const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
